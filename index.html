@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            background-color: #90EE90; /* Green Background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        #container {
+            text-align: center;
+            padding: 20px;
+            z-index: 2;
+        }
+
+        img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #yesBtn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.1s ease-in-out;
+        }
+
+        #noBtn {
+            background-color: #808080;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #message {
+            font-size: 45px;
+            color: white;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <!-- Initial Image: Bubbles GIF -->
+        <img id="mainImage" src="https://media.tenor.com/images/05826978166551609117f7d195971439/tenor.gif" alt="Bubbles Dancing">
+        
+        <h1 id="question">Will you be my valentine?</h1>
+
+        <div class="buttons" id="buttonGroup">
+            <button id="yesBtn">Yes</button>
+            <button id="noBtn">No</button>
+        </div>
+
+        <div id="message" class="hidden">See you on Feb 14 baby, mwahmwahmwah</div>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const question = document.getElementById('question');
+        const buttonGroup = document.getElementById('buttonGroup');
+        const message = document.getElementById('message');
+        const mainImage = document.getElementById('mainImage');
+
+        let yesSize = 20;
+        let paddingSize = 15;
+
+        noBtn.addEventListener('click', () => {
+            // Increase the size of the Yes button
+            yesSize += 35; 
+            paddingSize += 10;
+            
+            yesBtn.style.fontSize = yesSize + 'px';
+            yesBtn.style.padding = paddingSize + 'px ' + (paddingSize * 2) + 'px';
+            
+            // Playful No button phrases
+            const phrases = ["luh", "wehhh", "grabe", "wow", "tinatanggi pa", "babyyyyyyy", "awwww"];
+            noBtn.innerText = phrases[Math.floor(Math.random() * phrases.length)];
+        });
+
+        yesBtn.addEventListener('click', () => {
+            // Trigger Confetti
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ffffff', '#ff4d4d', '#ffcc00']
+            });
+
+            // Hide question and buttons
+            question.classList.add('hidden');
+            buttonGroup.classList.add('hidden');
+            
+            // Change image to the uploaded bear image
+            mainImage.src = "https://www.jenova.ai/f/5b2d430b-e3ca-4585-b96c-ead57fa8b1ee.webp";
+            
+            // Show the custom message
+            message.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
