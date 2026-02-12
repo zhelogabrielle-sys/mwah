@@ -21,20 +21,25 @@
 
         #container {
             text-align: center;
-            padding: 20px;
+            padding: 40px;
+            background-color: white; /* White card for the image and text */
+            border-radius: 30px;
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
             z-index: 2;
+            max-width: 400px;
         }
 
         img {
-            max-width: 300px;
+            max-width: 100%;
             height: auto;
+            border-radius: 15px;
             margin-bottom: 20px;
         }
 
         h1 {
-            color: #ffffff;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            color: #444;
             margin-bottom: 30px;
+            font-size: 24px;
         }
 
         .buttons {
@@ -70,10 +75,9 @@
         }
 
         #message {
-            font-size: 45px;
-            color: white;
+            font-size: 35px;
+            color: #ff4d4d;
             font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
             margin-top: 20px;
         }
     </style>
@@ -81,8 +85,8 @@
 <body>
 
     <div id="container">
-        <!-- Initial Image: Transparent Bears -->
-        <img id="mainImage" src="https://www.jenova.ai/f/83c362abac2e443096931b5bafc46bd7.png" alt="Cute Bears">
+        <!-- Initial Image: Original Bear Image -->
+        <img id="mainImage" src="https://www.jenova.ai/f/125b5f5a-a4f3-4f1e-b197-c56bc60b9e17.png" alt="Cute Bears">
         
         <h1 id="question">Will you be my valentine?</h1>
 
@@ -91,7 +95,7 @@
             <button id="noBtn">No</button>
         </div>
 
-        <div id="message" class="hidden">See you on Feb 14 baby, mwahmwahmwah</div>
+        <div id="message" class="hidden">mwahmwahmwah</div>
     </div>
 
     <script>
@@ -114,7 +118,7 @@
             yesBtn.style.padding = paddingSize + 'px ' + (paddingSize * 2) + 'px';
             
             // Playful No button phrases
-            const phrases = ["luh", "wehhh", "grabe", "wow", "tinatanggi pa", "babyyyyyyy", "awwww"];
+            const phrases = ["Are you sure?", "Really?", "Think again!", "Pwease?", "Don't do this!"];
             noBtn.innerText = phrases[Math.floor(Math.random() * phrases.length)];
         });
 
